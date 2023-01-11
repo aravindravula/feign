@@ -27,12 +27,14 @@ public class ExceptionUtils {
    * @param throwable the throwable to get the root cause for, may be null
    * @return the root cause of the {@link Throwable}, {@code null} if null throwable input
    */
+ 
   public static Throwable getRootCause(Throwable throwable) {
     if (throwable == null) {
       return null;
     }
     Throwable rootCause = throwable;
     // this is to avoid infinite loops for recursive cases
+    //I made a comment 
     final Set<Throwable> seenThrowables = new HashSet<>();
     seenThrowables.add(rootCause);
     while ((rootCause.getCause() != null && !seenThrowables.contains(rootCause.getCause()))) {
